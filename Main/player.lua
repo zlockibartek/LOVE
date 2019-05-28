@@ -4,7 +4,7 @@ local rad=math.rad
 
 function Player:new(x,y,health,speed)
   self.image = love.graphics.newImage("panda.png")
-  self.immune = 0
+  self.immune = false
   Player.super.new(self,x,y,health,speed)
   self.width = self.image:getWidth()/2
   self.height = self.image:getHeight()/2
@@ -73,10 +73,6 @@ function Player:update(dt)
     self.gun_x = self.x
     self.gun_y = self.y - self.height/2
     
-  end
-  
-  if self.immune > 0 then
-    self.immune = self.immune 
   end
   
   local window_height = love.graphics.getHeight()
