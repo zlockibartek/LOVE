@@ -4,6 +4,7 @@ local rad=math.rad
 
 function Player:new(x,y,health,speed)
   self.image = love.graphics.newImage("panda.png")
+  self.heart = love.graphics.newImage("heart.png")
   self.immune = false
   Player.super.new(self,x,y,health,speed)
   self.width = self.image:getWidth()/2
@@ -16,6 +17,10 @@ end
 
 function Player:draw()
   love.graphics.draw(self.image,self.x,self.y,self.rotation,0.5,0.5,self.width,self.height)
+  for i=0, self.health-1 do
+    love.graphics.draw(self.heart,i*100,0)
+  end
+  --love.graphics.rectangle("line",self.x,self.y,self.width,self.height)
 end
 
 function Player:update(dt)
@@ -95,6 +100,9 @@ end
 function Player:keyPressed(key)
     if key == "space" then
         table.insert(listOfBullets, Bullet(self.gun_x, self.gun_y))
+    end
+    if key == "escape" then
+      menu.menu_open = not menu.menu_open
     end
 end
 

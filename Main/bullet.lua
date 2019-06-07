@@ -30,6 +30,7 @@ end
 
 function Bullet:draw()
     love.graphics.draw(self.image, self.x, self.y,self.direction,1,1)
+    --love.graphics.rectangle("line",self.x,self.y,self.width,self.height)
 end
 
 function Bullet:checkCollision(obj)
